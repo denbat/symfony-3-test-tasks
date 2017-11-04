@@ -1,0 +1,30 @@
+AppBundle\Entity\Goods:
+    type: entity
+    table: goods
+    repositoryClass: AppBundle\Repository\GoodsRepository
+    id:
+        id:
+            type: integer
+            id: true
+            options:
+                unsigned: true
+            generator:
+                strategy: AUTO
+    oneToMany:
+        photos:
+            targetEntity: Photo
+            mappedBy: goods
+            orphanRemoval: true
+        prices:
+            targetEntity: Price
+            mappedBy: goods
+            orphanRemoval: true
+    fields:
+        title:
+            type: string
+            length: 255
+            unique: true
+        description:
+            type: text
+            nullable: true
+    lifecycleCallbacks: {  }

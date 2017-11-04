@@ -1,0 +1,31 @@
+AppBundle\Entity\Photo:
+    type: entity
+    table: photo
+    repositoryClass: AppBundle\Repository\PhotoRepository
+    id:
+        id:
+            type: integer
+            id: true
+            options:
+                unsigned: true
+            generator:
+                strategy: AUTO
+    fields:
+        goodsId:
+            type: integer
+            nullable: false
+            column: goods_id
+            options:
+                unsigned: true
+        basename:
+            type: string
+            nullable: false
+            length: 255
+    manyToOne:
+        goods:
+            targetEntity: Goods
+            inversedBy: photos
+            joinColumn:
+                name: goods_id
+                referencedColumnName: id
+    lifecycleCallbacks: {  }

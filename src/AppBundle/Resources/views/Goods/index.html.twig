@@ -1,0 +1,33 @@
+{% extends "::base.html.twig" %}
+
+{% block header %}<h1 class="title text-center">Select Goods by PriceTypeId=1</h1>{% endblock %}
+{% block content %}
+    <table class="table table-condensed">
+        <thead>
+            <th>Title</th>
+            <th>Price</th>
+            <th>Photos</th>
+        </thead>
+    {% for good in goods %}
+        <tr>
+            <td>{{ good.title }}</td>
+            <td>
+                {% for price in good.prices %}
+                    {{ price.price }}
+                {% endfor %}
+            </td>
+            <td>
+                {% for photo in good.photos %}
+                    <p>{{ photo.basename }}</p>
+                {% endfor %}
+            </td>
+        </tr>
+    {% else %}
+        <tr>
+            <td>There are no goods with price type 1</td>
+        </tr>
+    {% endfor %}
+    </table>
+    <hr>
+    <a class="btn btn-primary" href="{{ path('homepage') }}">< Go Back</a>
+{% endblock %}

@@ -1,0 +1,30 @@
+AppBundle\Entity\Price:
+    type: entity
+    table: price
+    repositoryClass: AppBundle\Repository\PriceRepository
+    id:
+        priceTypeId:
+            type: integer
+            nullable: false
+            column: price_type_id
+            options:
+                unsigned: true
+        goodsId:
+            type: integer
+            nullable: false
+            column: goods_id
+            options:
+                unsigned: true
+    fields:
+        price:
+            type: float
+            options:
+                default: 0.0
+    manyToOne:
+        goods:
+            targetEntity: Goods
+            inversedBy: prices
+            joinColumn:
+                name: goods_id
+                referencedColumnName: id
+    lifecycleCallbacks: {  }

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        {% block stylesheets %}
+            <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet" />
+        {% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    </head>
+    <body>
+        {% block body %}
+        <div id="wrapper">
+            <div class="container">
+                {% block header %}{% endblock %}
+                <hr>
+                {% block container %}
+                    <div class="row">
+                        {% block row %}
+                            <div class="col-lg-6 col-md-6 col-xs-12 col-md-offset-3 col-lg-offset-3 table-responsive">
+                                {% block content %}{% endblock %}
+                            </div>
+                        {% endblock %}
+                    </div>
+                {% endblock %}
+            </div>
+        </div>
+        {% endblock %}
+        {% block javascripts %}{% endblock %}
+    </body>
+</html>
