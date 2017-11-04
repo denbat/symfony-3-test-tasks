@@ -3,16 +3,23 @@ Symfony-3 Test Tasks
 
 ## Setup
 
+Clone repository
+```console
+$ git clone https://github.com/denbat/symfony-3-test-tasks.git
+$ cd symfony-3-test-tasks
+```
+
 Download dependencies
-``` bash
-composer update
+```console
+$ composer update
 ```
 
 Create database
-``` bash
-php bin/console doctrine:schema:update --force
+```console
+$ php bin/console doctrine:schema:update --force
 ```
+
 Load fixtures
-``` bash
-php bin/console doctrine:fixtures:load
+```console
+$ php bin/console doctrine:fixtures:load
 ```
