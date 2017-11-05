@@ -26,22 +26,12 @@ class GoodsFixtures extends Fixture
         $manager->flush();
 
         // Set Prices
-        $price = new Price($goods, 10, 1);
-        $goods->addPrice($price);
-        $manager->persist($price);
-
-        $price = new Price($goods, 40, 2);
-        $goods->addPrice($price);
-        $manager->persist($price);
+        $manager->persist(new Price($goods, 10, 1));
+        $manager->persist(new Price($goods, 40, 2));
 
         // Set Photos
-        $photo = new Photo($goods, 'images/goods_1.jpg');
-        $goods->addPhoto($photo);
-        $manager->persist($photo);
-
-        $photo = new Photo($goods, 'images/goods_2.jpg');
-        $goods->addPhoto($photo);
-        $manager->persist($photo);
+        $manager->persist(new Photo($goods, 'images/goods_1.jpg'));
+        $manager->persist(new Photo($goods, 'images/goods_2.jpg'));
 
 
         // Goods #2
@@ -50,18 +40,11 @@ class GoodsFixtures extends Fixture
         $manager->flush();
 
         // Set Prices
-        $price = new Price($goods, 20, 1);
-        $goods->addPrice($price);
-        $manager->persist($price);
-
-        $price = new Price($goods, 50, 2);
-        $goods->addPrice($price);
-        $manager->persist($price);
+        $manager->persist(new Price($goods, 20, 1));
+        $manager->persist(new Price($goods, 50, 2));
 
         // Set Photos
-        $photo = new Photo($goods, 'images/goods_3.jpg');
-        $goods->addPhoto($photo);
-        $manager->persist($photo);
+        $manager->persist(new Photo($goods, 'images/goods_3.jpg'));
 
 
         // Goods #2
@@ -70,9 +53,7 @@ class GoodsFixtures extends Fixture
         $manager->flush();
 
         // Set Prices
-        $price = new Price($goods, 30, 1);
-        $goods->addPrice($price);
-        $manager->persist($price);
+        $manager->persist(new Price($goods, 30, 1));
 
 
         $manager->flush();

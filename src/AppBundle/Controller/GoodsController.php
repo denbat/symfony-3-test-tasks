@@ -17,7 +17,7 @@ class GoodsController extends Controller
             'goods' => $this->getDoctrine()
                 ->getManager()
                 ->getRepository(Goods::class)
-                ->findByPriceTypeId(1)
+                ->findByPriceTypeId(1),
         ]);
     }
 

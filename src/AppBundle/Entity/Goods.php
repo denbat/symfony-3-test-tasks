@@ -136,17 +136,22 @@ class Goods
     }
 
     /**
-     * Set Photo
+     * Set Photos
      *
      * @param ArrayCollection $photos
      */
     public function setPhotos($photos)
     {
+        foreach ($photos as $photo) {
+            $photo->setGoods($this);
+        }
         $this->photos = $photos;
+
+        return $this;
     }
 
     /**
-     * Get Photo
+     * Get Photos
      *
      * @return ArrayCollection
      */
@@ -156,17 +161,22 @@ class Goods
     }
 
     /**
-     * Set Price
+     * Set Prices
      *
      * @param ArrayCollection $prices
      */
     public function setPrices($prices)
     {
+        foreach ($prices as $price) {
+            $price->setGoods($this);
+        }
         $this->prices = $prices;
+
+        return $this;
     }
 
     /**
-     * Get Price
+     * Get Prices
      *
      * @return ArrayCollection
      */
@@ -175,4 +185,3 @@ class Goods
         return $this->prices;
     }
 }
-

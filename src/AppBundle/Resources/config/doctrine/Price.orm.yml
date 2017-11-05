@@ -15,11 +15,6 @@ AppBundle\Entity\Price:
             column: goods_id
             options:
                 unsigned: true
-    fields:
-        price:
-            type: float
-            options:
-                default: 0.0
     manyToOne:
         goods:
             targetEntity: Goods
@@ -27,4 +22,9 @@ AppBundle\Entity\Price:
             joinColumn:
                 name: goods_id
                 referencedColumnName: id
+    fields:
+        price:
+            type: float
+            options:
+                default: 0.0
     lifecycleCallbacks: {  }

@@ -10,6 +10,13 @@ AppBundle\Entity\Photo:
                 unsigned: true
             generator:
                 strategy: AUTO
+    manyToOne:
+        goods:
+            targetEntity: Goods
+            inversedBy: photos
+            joinColumn:
+                name: goods_id
+                referencedColumnName: id
     fields:
         goodsId:
             type: integer
@@ -21,11 +28,4 @@ AppBundle\Entity\Photo:
             type: string
             nullable: false
             length: 255
-    manyToOne:
-        goods:
-            targetEntity: Goods
-            inversedBy: photos
-            joinColumn:
-                name: goods_id
-                referencedColumnName: id
     lifecycleCallbacks: {  }

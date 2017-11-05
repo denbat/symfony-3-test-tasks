@@ -1,6 +1,7 @@
 <?php
 
 namespace AppBundle\Repository;
+
 use Doctrine\ORM\Query\ResultSetMapping;
 
 /**
@@ -19,6 +20,7 @@ class GoodsRepository extends \Doctrine\ORM\EntityRepository
         $rsm->addEntityResult('AppBundle\Entity\Goods', 'g');
         $rsm->addFieldResult('g', 'id', 'id');
         $rsm->addFieldResult('g', 'title', 'title');
+        $rsm->addFieldResult('g', 'description', 'description');
         $rsm->addJoinedEntityResult('AppBundle\Entity\Price', 'p', 'g', 'prices');
         $rsm->addFieldResult('p', 'price_type_id', 'priceTypeId');
         $rsm->addFieldResult('p', 'p_goods_id', 'goodsId');
@@ -30,12 +32,12 @@ class GoodsRepository extends \Doctrine\ORM\EntityRepository
 
         $query = $this->getEntityManager()
             ->createNativeQuery('
-                SELECT g.id, g.title, g.description, 
+                SELECT g.*, 
                        ph.id AS ph_id, ph.goods_id AS ph_goods_id, ph.basename, 
                        p.price_type_id, p.goods_id AS p_goods_id, p.price
                 FROM goods g
-                JOIN price p ON p.goods_id=g.id
-                LEFT JOIN photo ph ON ph.goods_id=g.id
+                JOIN price p ON g.id=p.goods_id
+                LEFT JOIN photo ph ON g.id=ph.goods_id
                 WHERE p.price_type_id = ?
                 ORDER BY FIELD(g.id, 2, 3, 1)    
             ', $rsm)
